@@ -1,0 +1,164 @@
+{% extends 'book/base.html' %}
+{%  block content %}
+{% comment %}<h1>Title : {{ book.title }}</h1>
+<img src= "{{ book.logo }}">
+<h3>Author : {{ book.author }}</h3>
+<h4>ISBN : {{ book.isbn }}</h4>
+<h4>DESC : {{ book.desc }}</h4>{% endcomment %}
+
+
+
+
+
+
+
+    <!--content-->
+<!---->
+		<div class="product">
+			<div class="container">
+				<div class="col-md-3 product-price">
+
+				<div class=" rsidebar span_1_of_left">
+					<div class="of-left">
+						<h3 class="cate">Categories</h3>
+					</div>
+		 <ul class="menu">
+		<li class="item1"><a href="#">Men </a>
+			<ul class="cute">
+				<li class="subitem1"><a href="#">Cute Kittens </a></li>
+				<li class="subitem2"><a href="#">Strange Stuff </a></li>
+				<li class="subitem3"><a href="#">Automatic Fails </a></li>
+			</ul>
+		</li>
+		<li class="item2"><a href="#">Women </a>
+			<ul class="cute">
+				<li class="subitem1"><a href="#">Cute Kittens </a></li>
+				<li class="subitem2"><a href="#">Strange Stuff </a></li>
+				<li class="subitem3"><a href="#">Automatic Fails </a></li>
+			</ul>
+		</li>
+		<li class="item3"><a href="#">Kids</a>
+			<ul class="cute">
+				<li class="subitem1"><a href="#">Cute Kittens </a></li>
+				<li class="subitem2"><a href="#">Strange Stuff </a></li>
+				<li class="subitem3"><a href="#">Automatic Fails</a></li>
+			</ul>
+		</li>
+		<li class="item4"><a href="#">Accesories</a>
+			<ul class="cute">
+				<li class="subitem1"><a href="#">Cute Kittens </a></li>
+				<li class="subitem2"><a href="#">Strange Stuff </a></li>
+				<li class="subitem3"><a href="#">Automatic Fails</a></li>
+			</ul>
+		</li>
+
+		<li class="item4"><a href="#">Shoes</a>
+			<ul class="cute">
+				<li class="subitem1"><a href="#">Cute Kittens </a></li>
+				<li class="subitem2"><a href="#">Strange Stuff </a></li>
+				<li class="subitem3"><a href="#">Automatic Fails </a></li>
+			</ul>
+		</li>
+	</ul>
+					</div>
+				<!--initiate accordion-->
+		<script type="text/javascript">
+			$(function() {
+			    var menu_ul = $('.menu > li > ul'),
+			           menu_a  = $('.menu > li > a');
+			    menu_ul.hide();
+			    menu_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu_a.removeClass('active');
+			            menu_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+
+			});
+		</script>
+<!---->
+	<div class="product-middle">
+
+					<div class="fit-top">
+						<h6 class="shop-top">{{ book.title }}</h6>
+						<a href="#" class="shop-now">SHOP NOW</a>
+<div class="clearfix"> </div>
+	</div>
+				</div>
+
+				<!---->
+				<div class="product-bottom">
+
+
+
+
+
+
+
+				</div>
+				</div>
+				<div class="col-md-9 product-price1">
+				<div class="col-md-5 single-top">
+
+<!-- FlexSlider -->
+                    <div class="flexslider">
+                        <img src="{{ book.logo }}" width="300"/>
+
+                    </div>
+
+
+					</div>
+					<div class="col-md-7 single-top-in simpleCart_shelfItem">
+						<div class="single-para ">
+						<h4>{{ book.title }}</h4>
+							<div class="star-on">
+
+
+							<div class="clearfix"> </div>
+							</div>
+
+							<h5 class="item_price">{{ book.author }}</h5>
+							<p>{{ book.desc }} </p>
+
+
+								<a href="#" class="add-cart item_add">ADD TO CART</a>
+                            <form action="{% url 'book:favorite' book.isbn %}" method="post">
+    {% csrf_token %}
+    {% if book.favorite %}
+   <img src ="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/128/Star-fav-icon.png" width="32"><br>
+    {% else %}
+<input type = "submit" class="selected " value="Favorite">
+    {% endif %}
+
+</form>
+<form action="{% url 'book:unfav' book.isbn %}" method="post">
+    {%  csrf_token %}
+    {% if book.favorite %}
+    <input type="submit" class="selected " value="Un Favorite">
+    {% endif %}
+</form>
+
+						</div>
+					</div>
+				<div class="clearfix"> </div>
+			<!---->
+					<div class="cd-tabs">
+
+
+</div>
+
+		<div class="clearfix"> </div>
+		</div>
+		</div>
+<!--//content-->
+
+
+
+</div>
+
+{% endblock %}

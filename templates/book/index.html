@@ -1,0 +1,143 @@
+{% extends 'book/base.html' %}
+{% load staticfiles %}
+{%  block content %}
+{% comment %}{%  if all_books %}
+    <h1>Here the list of Books</h1>
+  <ul>
+      {%  for book in all_books  %}
+      <li><img src ="{{ book.logo }}"/><br> "<a href=" {% url 'book:detail' book.isbn %} "> {{ book.title }}</a> </li>
+  {% endfor %}
+  </ul>
+{% else %}
+<h3>Oops, Book Not Found!</h3>
+{% endif %}{% endcomment %}
+
+
+
+    <!--content-->
+<!---->
+		<div class="product">
+			<div class="container">
+				<div class="col-md-3 product-price">
+
+				<div class=" rsidebar span_1_of_left">
+					<div class="of-left">
+						<h3 class="cate">Categories</h3>
+					</div>
+		 <ul class="menu">
+		<li class="item1"><a href="#">Men </a>
+			<ul class="cute">
+				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
+				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
+				<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
+			</ul>
+		</li>
+		<li class="item2"><a href="#">Women </a>
+			<ul class="cute">
+				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
+				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
+				<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
+			</ul>
+		</li>
+		<li class="item3"><a href="#">Kids</a>
+			<ul class="cute">
+				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
+				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
+				<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
+			</ul>
+		</li>
+		<li class="item4"><a href="#">Accesories</a>
+			<ul class="cute">
+				<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
+				<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
+				<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
+			</ul>
+		</li>
+
+		<li class="item4"><a href="#">Shoes</a>
+			<ul class="cute">
+				<li class="subitem1"><a href="product.html">Cute Kittens </a></li>
+				<li class="subitem2"><a href="product.html">Strange Stuff </a></li>
+				<li class="subitem3"><a href="product.html">Automatic Fails </a></li>
+			</ul>
+		</li>
+	</ul>
+					</div>
+				<!--initiate accordion-->
+		<script type="text/javascript">
+			$(function() {
+			    var menu_ul = $('.menu > li > ul'),
+			           menu_a  = $('.menu > li > a');
+			    menu_ul.hide();
+			    menu_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu_a.removeClass('active');
+			            menu_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+
+			});
+		</script>
+<!---->
+	<div class="product-middle">
+
+
+				</div>
+
+
+
+				<!---->
+
+<div class=" per1">
+
+			</div>
+				</div>
+				<div class="col-md-9 product1">
+{%  for book in all_books  %}
+     {% comment %} <li><img src ="{{ book.logo }}"/><br> "<a href=" {% url 'book:detail' book.isbn %} "> {{ book.title }}</a> </li>{% endcomment %}
+
+					<div class=" bottom-product">
+					<div class="col-md-4 bottom-cd simpleCart_shelfItem">
+						<div class="product-at ">
+							<a href="{% url 'book:detail' book.isbn %}"><img class="img-responsive" src="{{ book.logo }}" alt="">
+							<div class="pro-grid">
+										<span class="buy-in">Buy Now</span>
+							</div>
+						</a>
+						</div>
+						<p class="tun">{{ book.desc }}</p>
+					<a href="{% url 'book:detail' book.isbn %}" class="item_add"><p class="number item_price"><i> </i>{{ book.title }}</p></a>
+
+					</div>
+				</div> {% endfor %}
+		<div class="clearfix"> </div>
+
+
+
+		<nav class="in">
+				  <ul class="pagination">
+					<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">2 <span class="sr-only"></span></a></li>
+					<li><a href="#">3 <span class="sr-only"></span></a></li>
+					<li><a href="#">4 <span class="sr-only"></span></a></li>
+					<li><a href="#">5 <span class="sr-only"></span></a></li>
+					 <li> <a href="#" aria-label="Next"><span aria-hidden="true">»</span> </a> </li>
+				  </ul>
+				</nav>
+		</div>
+
+		</div>
+
+				<!---->
+
+<!--//content-->
+
+
+</div>
+{% endblock %}

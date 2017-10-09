@@ -1,0 +1,10 @@
+{% extends 'book/base.html' %}
+{% block content %}
+      <h3>Create a new Account</h3>
+
+<form action="" method="post">
+{% csrf_token %}
+{% include 'book/form_template.html' %}
+<button type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'book/base.html' %}
+{% block content %}
+      <h3>Login</h3>
+
+<form  action="{% url 'book:login_user'%}" method="post" >
+ {% csrf_token %}
+<label>Username: </label>
+<input  name="username" type="text"><br>
+<label>Password: </label>
+<input  name="password" type="password"><br>
+  <button type="submit" >Submit</button>
+</form>
+{% endblock %}

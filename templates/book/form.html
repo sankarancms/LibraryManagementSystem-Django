@@ -1,0 +1,7 @@
+{% extends 'book/base.html' %}
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+{% include 'book/form_template.html' %}
+</form>
+{% endblock %}
